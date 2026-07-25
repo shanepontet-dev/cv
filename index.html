@@ -445,6 +445,36 @@
     margin-bottom:2px;
     display:block;
   }
+  .lightbox-thumbs{
+    flex:none;
+    display:flex;
+    gap:6px;
+    padding:10px 14px;
+    overflow-x:auto;
+    border-top:1px solid var(--border-soft);
+    background:var(--card);
+  }
+  .lightbox-thumb{
+    flex:none;
+    width:48px;
+    height:48px;
+    padding:0;
+    border-radius:6px;
+    overflow:hidden;
+    border:2px solid transparent;
+    cursor:pointer;
+    background:var(--card-alt);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#9296a0;
+    opacity:.55;
+    transition:opacity .2s ease, border-color .2s ease;
+  }
+  .lightbox-thumb:hover{ opacity:.85; }
+  .lightbox-thumb.active{ opacity:1; border-color:var(--dark); }
+  .lightbox-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .lightbox-thumb svg{ width:18px; height:18px; flex:none; }
   .lightbox-close, .lightbox-prev, .lightbox-next{
     position:absolute;
     z-index:2;
@@ -719,18 +749,28 @@
             <a class="logo-chip" href="https://www.safesitefacilities.co.uk/" target="_blank" rel="noopener" aria-label="Safesite"><img src="safesite.png" alt="Safesite"></a>
             <a class="logo-chip" href="https://www.midsussex.gov.uk/" target="_blank" rel="noopener" aria-label="Mid Sussex District Council"><img src="midsussex.png" alt="Mid Sussex District Council"></a>
             <a class="logo-chip" href="https://www.coapt.co.uk/" target="_blank" rel="noopener" aria-label="Coapt"><img src="coapt.png" alt="Coapt"></a>
+            <a class="logo-chip" href="https://subcold.com/" target="_blank" rel="noopener" aria-label="Subcold"><img src="subcold.png" alt="Subcold"></a>
+            <a class="logo-chip" href="https://bowlcentral.co.uk/" target="_blank" rel="noopener" aria-label="Bowl Central"><img src="bowlcentral.png" alt="Bowl Central"></a>
             <a class="logo-chip" href="https://www.wolf1834.com/uk" target="_blank" rel="noopener" aria-label="Wolf 1834"><img src="wolf1834.png" alt="Wolf 1834"></a>
             <a class="logo-chip" href="https://www.dhl.com/gb-en/home.html" target="_blank" rel="noopener" aria-label="DHL"><img src="dhl.png" alt="DHL"></a>
             <a class="logo-chip" href="https://www.safesitefacilities.co.uk/" target="_blank" rel="noopener" aria-label="Safesite"><img src="safesite.png" alt="Safesite"></a>
             <a class="logo-chip" href="https://www.midsussex.gov.uk/" target="_blank" rel="noopener" aria-label="Mid Sussex District Council"><img src="midsussex.png" alt="Mid Sussex District Council"></a>
             <a class="logo-chip" href="https://www.coapt.co.uk/" target="_blank" rel="noopener" aria-label="Coapt"><img src="coapt.png" alt="Coapt"></a>
+            <a class="logo-chip" href="https://subcold.com/" target="_blank" rel="noopener" aria-label="Subcold"><img src="subcold.png" alt="Subcold"></a>
+            <a class="logo-chip" href="https://bowlcentral.co.uk/" target="_blank" rel="noopener" aria-label="Bowl Central"><img src="bowlcentral.png" alt="Bowl Central"></a>
           </div>
         </div>
       </div>
-      <a class="job-cta" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-        Project examples (coming soon)
-      </a>
+      <div class="job-cta-row">
+        <a class="job-cta" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          Project examples (coming soon)
+        </a>
+        <button type="button" class="job-cta gallery-btn" data-gallery-id="foxbear">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Gallery
+        </button>
+      </div>
       <div class="job-reference">
         <div class="job-reference-label">Reference</div>
         <div><span class="job-reference-name">James Dempster</span><span class="job-reference-contact"><a href="mailto:james@foxbear.co.uk">james@foxbear.co.uk</a></span></div>
@@ -975,6 +1015,7 @@
       <span class="lightbox-counter" id="lightbox-counter"></span>
       <span id="lightbox-caption-text"></span>
     </div>
+    <div class="lightbox-thumbs" id="lightbox-thumbs"></div>
   </div>
 </div>
 
@@ -997,6 +1038,28 @@
       { type:'image', src:'Saber3.jpeg', caption:'Event promo creative: Solar and Storage Live, ExCeL London' },
       { type:'image', src:'saber4.jpeg', caption:'White paper launch creative: "Blended renewables for UK Manufacturing"' },
       { type:'image', src:'saber5.jpeg', caption:'LinkedIn article creative: "UK Energy Costs Are Forcing Manufacturers Out"' }
+    ],
+    foxbear: [
+      { type:'image', src:'wolf1.webp', caption:'Wolf 1834: outdoor billboard campaign for the MIMI bag collection' },
+      { type:'image', src:'wolf9.jpg', caption:'Wolf 1834: brand lifestyle photography featuring the MIMI bag' },
+      { type:'image', src:'wolf6.jpg', caption:'Wolf 1834: trade show booth banner, INDX Woman, Solihull' },
+      { type:'image', src:'wolf2.webp', caption:'Wolf 1834: press feature in Country Life magazine' },
+      { type:'image', src:'wolf7.png', caption:'Wolf 1834: ecommerce product page for the Elements watch winder collection' },
+      { type:'image', src:'wolf10.jpg', caption:'Wolf 1834: product advert for the Viceroy watch winder' },
+      { type:'image', src:'wolf8.png', caption:'Wolf 1834: product photography moodboard across the watch winder range' },
+      { type:'pdf', src:'wolf3.pdf', caption:'Wolf 1834: "Wolf x WM Brown" campaign deck' },
+      { type:'pdf', src:'wolf4.pdf', caption:'Wolf 1834: "Elements" campaign deck' },
+      { type:'pdf', src:'wolf5.pdf', caption:'Wolf 1834: "BEA Retired" campaign deck' },
+      { type:'image', src:'dhs1.png', caption:'DHL: social post, "Handled with utmost care, because cucumbers are made up of approx. 96% water"' },
+      { type:'image', src:'dhs2.png', caption:'DHL: "Extreme Delivery" campaign, the cold chain journey of a cucumber from field to jar' },
+      { type:'image', src:'dis1.png', caption:'Mid Sussex District Council: recruitment ad, "Join us and make a difference in our community"' },
+      { type:'image', src:'dis2.png', caption:'Mid Sussex District Council: recycling truck livery design' },
+      { type:'image', src:'dis3.png', caption:'Mid Sussex District Council: lamppost banner ad mockup' },
+      { type:'image', src:'safesite1.png', caption:'Safesite Facilities: product brochure for the Centipede II expandable barrier' },
+      { type:'image', src:'Subcold1.png', caption:'Subcold: "Super Beer Fridges" social ad set' },
+      { type:'image', src:'subcold2.png', caption:'Subcold: "Super Beer Fridges" outdoor billboard ad' },
+      { type:'image', src:'bowling1.png', caption:'Bowl Central: social media ad set' },
+      { type:'video', src:'coapt1.mp4', caption:'Coapt: video ad' }
     ]
   };
 
@@ -1005,8 +1068,43 @@
     var stage = document.getElementById('lightbox-stage');
     var counter = document.getElementById('lightbox-counter');
     var captionText = document.getElementById('lightbox-caption-text');
+    var thumbsEl = document.getElementById('lightbox-thumbs');
     var currentItems = [];
     var currentIndex = 0;
+
+    var pdfIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>';
+    var videoIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="15" height="14" rx="2"/><polygon points="23 7 16 12 23 17 23 7"/></svg>';
+
+    function buildThumbs(){
+      thumbsEl.innerHTML = '';
+      currentItems.forEach(function(item, i){
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'lightbox-thumb';
+        btn.setAttribute('aria-label', 'Go to item ' + (i + 1));
+        if(item.type === 'image'){
+          var img = document.createElement('img');
+          img.src = item.src;
+          img.alt = '';
+          btn.appendChild(img);
+        } else if(item.type === 'pdf'){
+          btn.innerHTML = pdfIcon;
+        } else if(item.type === 'video'){
+          btn.innerHTML = videoIcon;
+        }
+        btn.addEventListener('click', function(){ currentIndex = i; render(); });
+        thumbsEl.appendChild(btn);
+      });
+    }
+
+    function updateActiveThumb(){
+      var thumbs = thumbsEl.children;
+      for(var i = 0; i < thumbs.length; i++){
+        thumbs[i].classList.toggle('active', i === currentIndex);
+      }
+      var active = thumbs[currentIndex];
+      if(active) active.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
+    }
 
     function render(){
       var item = currentItems[currentIndex];
@@ -1029,6 +1127,7 @@
       }
       counter.textContent = (currentIndex + 1) + ' / ' + currentItems.length;
       captionText.textContent = item.caption || '';
+      updateActiveThumb();
     }
 
     function open(items, startIndex){
@@ -1036,6 +1135,7 @@
       currentIndex = startIndex || 0;
       overlay.hidden = false;
       document.body.style.overflow = 'hidden';
+      buildThumbs();
       render();
     }
 
