@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shane Pontet CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Quicksand:wght@500;600;700&family=Figtree:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fdfdfd;
+    --card:#ffffff;
+    --card-alt:#f6f7f8;
+    --title-bg:#fcfcfc;
+    --border:#f0f0f0;
+    --border-soft:#f2f2f2;
+    --text:#6f7580;
+    --alt-text:#4f576a;
+    --heading:#4b5057;
+    --bold:#454545;
+    --dark:#33373c;
+    --dark-text:#eeeeee;
+    --underline:#e8e8e8;
+    --radius:.6rem;
+    --heading-font:"Quicksand","Segoe UI",sans-serif;
+    --body-font:"Instrument Sans","Segoe UI",sans-serif;
+    --caps-font:"Figtree","Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{background:var(--bg);}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body-font);
+    font-size:13px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:#b4d7ff; color:var(--text); }
+
+  a{ color:var(--dark); text-decoration:underline; text-decoration-color:var(--underline); text-underline-offset:2px; }
+
+  h1,h2,h3{ font-family:var(--heading-font); color:var(--heading); font-weight:600; letter-spacing:.01em; }
+
+  .layout{
+    display:flex;
+    align-items:flex-start;
+    gap:44px;
+    max-width:1160px;
+    margin:0 auto;
+    padding:56px 28px 80px;
+  }
+
+  /* ---------- shared card / box chrome ---------- */
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+  }
+
+  /* ================= LEFT SIDEBAR ================= */
+  .col-left{
+    flex:0 0 226px;
+    width:226px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    position:sticky;
+    top:40px;
+  }
+
+  .profile-card{ padding:22px 18px 20px; text-align:center; }
+
+  .avatar-stack{
+    position:relative;
+    width:112px;
+    height:112px;
+    margin:0 auto 16px;
+    cursor:pointer;
+  }
+  .avatar-behind{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    border-radius:var(--radius);
+    background:var(--card-alt);
+    border:1px solid var(--border);
+    overflow:hidden;
+    transform:rotate(-9deg) translate(12px,8px);
+    transition:transform .35s ease, z-index 0s;
+  }
+  .avatar-behind img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .avatar{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    width:112px;
+    height:112px;
+    margin:0;
+    border-radius:var(--radius);
+    background:var(--card-alt);
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--heading-font);
+    font-weight:700;
+    font-size:30px;
+    letter-spacing:.04em;
+    color:var(--heading);
+    overflow:hidden;
+    transform:rotate(0deg) translate(0,0);
+    transition:transform .35s ease, z-index 0s;
+  }
+  .avatar-stack.swapped .avatar{
+    transform:rotate(-9deg) translate(12px,8px);
+    z-index:1;
+  }
+  .avatar-stack.swapped .avatar-behind{
+    transform:rotate(0deg) translate(0,0);
+    z-index:2;
+  }
+  .avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .p-name{ font-size:17px; margin-bottom:4px; }
+  .p-role{
+    font-family:var(--caps-font);
+    font-size:9.5px;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--text);
+    margin-bottom:16px;
+  }
+
+  .icon-row{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+  }
+  .icon-btn{
+    width:34px; height:34px;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--border);
+    background:var(--card);
+    border-radius:.4rem;
+    color:#6f7280;
+    text-decoration:none;
+    transition:background .3s ease, color .3s ease, border-color .3s ease;
+  }
+  a.icon-btn:hover{ background:#f8f9fb; border-color:var(--border); color:#575a65; }
+  .icon-btn svg{ width:15px; height:15px; }
+
+  .link-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .link-row{
+    display:block;
+    border:1px solid var(--border);
+    background:var(--title-bg);
+    border-radius:.4rem;
+    padding:9px 13px;
+    font-family:var(--caps-font);
+    font-size:10.5px;
+    letter-spacing:.03em;
+    color:#575a65;
+    text-decoration:none;
+    transition:background .4s ease, color .4s ease, border-color .4s ease;
+  }
+  a.link-row:hover{ background:var(--dark); border-color:var(--dark); color:var(--dark-text); }
+  .link-row.static{ color:var(--text); cursor:default; }
+
+  /* ================= MIDDLE — EXPERIENCE ================= */
+  .col-mid{
+    flex:1 1 520px;
+    max-width:560px;
+    min-width:0;
+  }
+
+  .col-title{
+    font-family:var(--caps-font);
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#575a65;
+    margin-bottom:16px;
+    padding-left:2px;
+  }
+
+  .job{
+    padding:20px 22px 22px;
+    margin-bottom:24px;
+    break-inside:avoid;
+  }
+  .job:last-child{ margin-bottom:0; }
+
+  .job-head{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:6px 10px;
+    margin-bottom:2px;
+  }
+  .job-title-row{ display:flex; align-items:center; gap:9px; min-width:0; }
+  .job-favicon{
+    flex:none;
+    width:22px; height:22px;
+    border-radius:6px;
+    border:1px solid var(--border);
+    background:#fff;
+    object-fit:cover;
+  }
+  .job-favicon-group{ display:flex; align-items:center; flex:none; }
+  .job-favicon-group .job-favicon:not(:first-child){ margin-left:-8px; }
+  .job-favicon-fallback{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--heading-font);
+    font-weight:700;
+    font-size:7.5px;
+    letter-spacing:.02em;
+    color:var(--heading);
+    background:var(--card-alt);
+  }
+  .job h2{ font-size:15px; line-height:1.4; }
+  .job-date{
+    flex:none;
+    margin-left:auto;
+    font-family:var(--caps-font);
+    font-size:9.5px;
+    letter-spacing:.03em;
+    color:#6e7680;
+    background:var(--card-alt);
+    border:1px solid var(--border-soft);
+    border-radius:1em;
+    padding:3px 10px;
+    white-space:nowrap;
+    margin-top:2px;
+  }
+  .job-org{
+    font-style:italic;
+    color:var(--alt-text);
+    font-size:12.5px;
+    margin-bottom:12px;
+  }
+  .job-org a{
+    color:inherit;
+    text-decoration-color:transparent;
+    transition:text-decoration-color .25s ease;
+  }
+  .job-org a:hover{ text-decoration-color:var(--alt-text); }
+
+  .job ul{ list-style:none; }
+  .job li{
+    position:relative;
+    padding-left:15px;
+    font-size:12.5px;
+    line-height:1.55;
+    color:var(--text);
+    margin-bottom:6px;
+  }
+  .job li:last-child{ margin-bottom:0; }
+  .job li::before{
+    content:"";
+    position:absolute;
+    left:1px; top:8px;
+    width:4px; height:4px;
+    border-radius:50%;
+    background:#c9ccd3;
+  }
+
+  .client-logos{
+    margin-top:16px;
+    padding-top:14px;
+    border-top:1px dashed var(--border-soft);
+  }
+  .client-logos-label{
+    font-family:var(--caps-font);
+    font-size:9.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:#9296a0;
+    margin-bottom:10px;
+  }
+  .logo-scroller{
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  }
+  .logo-track{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:max-content;
+    animation:scroll-logos 16s linear infinite;
+  }
+  .logo-scroller:hover .logo-track{ animation-play-state:paused; }
+  .logo-chip{
+    flex:none;
+    width:44px; height:44px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid var(--border);
+    border-radius:.5rem;
+    background:#fff;
+    transition:border-color .3s ease, transform .3s ease;
+  }
+  a.logo-chip:hover{ border-color:#c9ccd3; transform:translateY(-2px); }
+  .logo-chip img{ width:26px; height:26px; object-fit:contain; }
+  @keyframes scroll-logos{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce){
+    .logo-track{ animation:none; flex-wrap:wrap; }
+  }
+
+  .job-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:16px;
+    padding:7px 14px;
+    border:1px dashed #d8dade;
+    border-radius:1em;
+    background:var(--title-bg);
+    font-family:var(--caps-font);
+    font-size:10.5px;
+    letter-spacing:.03em;
+    color:#575a65;
+    text-decoration:none;
+    transition:background .3s ease, color .3s ease, border-color .3s ease;
+  }
+  .job-cta:hover{ background:var(--dark); border-color:var(--dark); color:var(--dark-text); }
+  .job-cta svg{ width:11px; height:11px; flex:none; }
+
+  /* ================= RIGHT SIDEBAR ================= */
+  .col-right{
+    flex:0 0 292px;
+    width:292px;
+    display:flex;
+    flex-direction:column;
+    gap:26px;
+  }
+
+  .box-title{
+    font-family:var(--caps-font);
+    font-size:10.5px;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:#575a65;
+    background:var(--title-bg);
+    border:1px solid var(--border);
+    border-bottom:none;
+    border-radius:var(--radius) var(--radius) 0 0;
+    padding:9px 14px;
+  }
+  .box-body{
+    background:var(--card);
+    border:1px solid var(--border-soft);
+    border-top:none;
+    border-radius:0 0 var(--radius) var(--radius);
+    padding:15px 14px;
+    font-size:12.5px;
+    color:#575a65;
+  }
+  .box-body p{ line-height:1.65; }
+
+  .tag-group{ margin-bottom:14px; }
+  .tag-group:last-child{ margin-bottom:0; }
+  .tag-group-label{
+    font-family:var(--caps-font);
+    font-size:9.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:#9296a0;
+    margin-bottom:6px;
+  }
+
+  .tags{ display:flex; flex-wrap:wrap; gap:6px; }
+  .tag{
+    font-family:var(--caps-font);
+    font-size:10px;
+    letter-spacing:.02em;
+    color:#575a65;
+    background:var(--card-alt);
+    border:1px solid var(--border-soft);
+    border-radius:1em;
+    padding:4px 10px;
+    line-height:1.3;
+  }
+
+  .edu-row{
+    display:flex;
+    flex-direction:column;
+    padding:9px 0;
+    border-bottom:1px dashed var(--border-soft);
+  }
+  .edu-row:first-child{ padding-top:0; }
+  .edu-row:last-child{ padding-bottom:0; border-bottom:none; }
+  .edu-title{ font-weight:600; color:var(--bold); font-size:12.5px; }
+  .edu-meta{ font-size:11px; color:var(--text); margin-top:2px; }
+
+  .vol-item{ padding:10px 0; border-bottom:1px dashed var(--border-soft); }
+  .vol-item:first-child{ padding-top:0; }
+  .vol-item:last-child{ padding-bottom:0; border-bottom:none; }
+  .vol-title{ font-weight:600; color:var(--bold); font-size:12.5px; display:block; }
+  .vol-org{ font-style:italic; color:var(--alt-text); font-size:11px; display:block; margin:2px 0 4px; }
+  .vol-item p{ font-size:11.5px; line-height:1.55; }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:920px){
+    .layout{ flex-direction:column; align-items:stretch; padding:32px 20px 60px; gap:28px; }
+    .col-left, .col-mid, .col-right > .section{ width:100%; max-width:560px; margin:0 auto; position:static; order:4; }
+    .col-left{ order:1; flex-direction:row; flex-wrap:wrap; }
+    .profile-card{ flex:1 1 100%; }
+    .col-mid{ order:3; }
+    .col-right{ display:contents; }
+    .col-right > .summary-col{ order:2; }
+  }
+
+  .site-credit{
+    position:fixed;
+    left:16px;
+    bottom:16px;
+    z-index:1000;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:7px 12px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:1em;
+    font-family:var(--caps-font);
+    font-size:10.5px;
+    letter-spacing:.03em;
+    color:#575a65;
+    text-decoration:none;
+    box-shadow:0 2px 10px rgba(0,0,0,.07);
+    transition:background .3s ease, color .3s ease, border-color .3s ease;
+  }
+  .site-credit:hover{ background:var(--dark); border-color:var(--dark); color:var(--dark-text); }
+  .site-credit svg{ width:13px; height:13px; flex:none; }
+
+  @media print{
+    .site-credit{ display:none; }
+    body{ background:#fff; }
+    .layout{ max-width:100%; padding:12mm; gap:22px; }
+    .col-left{ position:static; }
+    a{ text-decoration:none; }
+    * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  }
+</style>
+</head>
+<body>
+
+<main class="layout">
+
+  <!-- ================= LEFT ================= -->
+  <aside class="col-left">
+    <div class="card profile-card">
+      <div class="avatar-stack" role="button" tabindex="0" aria-label="Click to swap profile picture" title="Click to swap photo">
+        <div class="avatar-behind"><img src="images/profile2.png" alt="Shane Pontet, pixel avatar"></div>
+        <div class="avatar"><img src="images/profile.jpg" alt="Shane Pontet"></div>
+      </div>
+      <div class="p-name">Shane Pontet</div>
+      <div class="p-role">Marketing &amp; Business Development</div>
+
+      <nav class="icon-row">
+        <a class="icon-btn" href="https://www.linkedin.com/in/shanepontet/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a1.94 1.94 0 1 1-3.88 0 1.94 1.94 0 0 1 3.88 0zM3.5 8.5h3.4V21H3.5V8.5zM9.5 8.5h3.26v1.71h.05c.45-.86 1.56-1.77 3.21-1.77 3.43 0 4.06 2.26 4.06 5.2V21h-3.4v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V21H9.5V8.5z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://dribbble.com/shanepontet/shots" target="_blank" rel="noopener" aria-label="Dribbble">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M4 9.5c4.5 1.4 9.5 1.4 15.3-.4M2.8 15c5-1.2 11-1 14.4 3.3M9 3.2c2.8 3.6 4.5 8 4.7 17.4"/></svg>
+        </a>
+      </nav>
+    </div>
+
+    <nav class="link-list">
+      <a class="link-row" href="mailto:shanepontet@outlook.com">shanepontet@outlook.com</a>
+      <a class="link-row" href="tel:07904056129">07904 056129</a>
+      <span class="link-row static">Worthing, West Sussex BN12 6FP</span>
+    </nav>
+  </aside>
+
+  <!-- ================= MIDDLE ================= -->
+  <section class="col-mid">
+    <div class="col-title">Experience</div>
+
+    <article class="job card">
+      <div class="job-head">
+        <div class="job-title-row">
+          <img class="job-favicon" src="images/favicons/saber.png" alt="">
+          <h2>Marketing Executive</h2>
+        </div>
+        <span class="job-date">Apr 2026 – TBC</span>
+      </div>
+      <div class="job-org"><a href="https://saberrenewables.com/" target="_blank" rel="noopener">Saber Renewable Energy</a>, Chorley · Maternity Cover</div>
+      <ul>
+        <li>Authored the "Finding the Perfect Blend of Renewables for UK Manufacturers" white paper, the anchor asset for the Manufacturing sector campaign, co-marketed with technology partner 2G Energy</li>
+        <li>Owned execution of the sector marketing campaign built around it, spanning content, LinkedIn, email nurture and paid lead generation</li>
+        <li>Audited and rewrote the full campaign asset library against the white paper, catching unverified claims and factual inconsistencies before publication</li>
+        <li>Scoped and recommended a £7,499 paid lead generation package targeting 25 MQLs from an approximately 8,000-contact ICP, run as a controlled test rather than committing to unproven spend</li>
+        <li>Built an internal project deck for a 251.9 MWp solar PPA programme across 525 surveyed sites, covering grid status and live recommissions</li>
+        <li>Managed a LinkedIn paid campaign targeting director-level prospects at UK manufacturing companies with 200+ employees</li>
+      </ul>
+      <a class="job-cta" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        Case study (coming soon)
+      </a>
+    </article>
+
+    <article class="job card">
+      <div class="job-head">
+        <div class="job-title-row">
+          <img class="job-favicon" src="images/favicons/controlfreq.png" alt="">
+          <h2>Marketing Executive</h2>
+        </div>
+        <span class="job-date">Oct 2023 – Apr 2026</span>
+      </div>
+      <div class="job-org"><a href="https://controlfreq.co.uk/" target="_blank" rel="noopener">ControlFreq</a>, Worthing</div>
+      <ul>
+        <li>Lead marketing strategy to generate qualified inbound leads and support new business development</li>
+        <li>Plan and deliver multi-channel digital campaigns across SEO, paid media and email to grow visibility and enquiries</li>
+        <li>Own the full lead lifecycle from enquiry and qualification through to handover to sales</li>
+        <li>Manage CRM systems to track lead activity, maintain accurate data and improve pipeline visibility</li>
+        <li>Report on campaign and pipeline performance to senior stakeholders, presenting findings clearly and recommending next steps</li>
+        <li>Plan content calendars and produce marketing materials across web, email and social channels</li>
+        <li>Analyse campaign performance and market trends to sharpen commercial positioning and improve conversion</li>
+      </ul>
+      <a class="job-cta" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        Case study (coming soon)
+      </a>
+    </article>
+
+    <article class="job card">
+      <div class="job-head">
+        <div class="job-title-row">
+          <span class="job-favicon job-favicon-fallback">F&amp;B</span>
+          <h2>Marketing and Sales Coordinator</h2>
+        </div>
+        <span class="job-date">Oct 2023 – Feb 2024</span>
+      </div>
+      <div class="job-org"><a href="https://www.facebook.com/TheFoxandBearUK/" target="_blank" rel="noopener">Fox &amp; Bear</a>, Brighton</div>
+      <ul>
+        <li>Supported lead generation and business development campaigns across marketing and sales</li>
+        <li>Prepared sales proposals, presentations and marketing materials for commercial opportunities</li>
+        <li>Managed CRM records to track enquiries and support sales pipeline activity</li>
+        <li>Wrote and scheduled marketing content across email, website and social media channels</li>
+        <li>Coordinated email marketing, website updates and social media, and conducted market research on prospects</li>
+      </ul>
+
+      <div class="client-logos">
+        <div class="client-logos-label">Agency brands worked with</div>
+        <div class="logo-scroller">
+          <div class="logo-track">
+            <a class="logo-chip" href="https://www.wolf1834.com/uk" target="_blank" rel="noopener" aria-label="Wolf 1834"><img src="images/clients/wolf1834.png" alt="Wolf 1834"></a>
+            <a class="logo-chip" href="https://www.dhl.com/gb-en/home.html" target="_blank" rel="noopener" aria-label="DHL"><img src="images/clients/dhl.png" alt="DHL"></a>
+            <a class="logo-chip" href="https://www.safesitefacilities.co.uk/" target="_blank" rel="noopener" aria-label="Safesite"><img src="images/clients/safesite.png" alt="Safesite"></a>
+            <a class="logo-chip" href="https://www.midsussex.gov.uk/" target="_blank" rel="noopener" aria-label="Mid Sussex District Council"><img src="images/clients/midsussex.png" alt="Mid Sussex District Council"></a>
+            <a class="logo-chip" href="https://www.coapt.co.uk/" target="_blank" rel="noopener" aria-label="Coapt"><img src="images/clients/coapt.png" alt="Coapt"></a>
+            <a class="logo-chip" href="https://www.wolf1834.com/uk" target="_blank" rel="noopener" aria-label="Wolf 1834"><img src="images/clients/wolf1834.png" alt="Wolf 1834"></a>
+            <a class="logo-chip" href="https://www.dhl.com/gb-en/home.html" target="_blank" rel="noopener" aria-label="DHL"><img src="images/clients/dhl.png" alt="DHL"></a>
+            <a class="logo-chip" href="https://www.safesitefacilities.co.uk/" target="_blank" rel="noopener" aria-label="Safesite"><img src="images/clients/safesite.png" alt="Safesite"></a>
+            <a class="logo-chip" href="https://www.midsussex.gov.uk/" target="_blank" rel="noopener" aria-label="Mid Sussex District Council"><img src="images/clients/midsussex.png" alt="Mid Sussex District Council"></a>
+            <a class="logo-chip" href="https://www.coapt.co.uk/" target="_blank" rel="noopener" aria-label="Coapt"><img src="images/clients/coapt.png" alt="Coapt"></a>
+          </div>
+        </div>
+      </div>
+      <a class="job-cta" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        Case study (coming soon)
+      </a>
+    </article>
+
+    <article class="job card">
+      <div class="job-head">
+        <div class="job-title-row">
+          <span class="job-favicon-group">
+            <img class="job-favicon" src="images/favicons/qcaregroup.png" alt="Quality Care Group">
+            <img class="job-favicon" src="images/favicons/pollardspromises.png" alt="Pollard's Promises">
+          </span>
+          <h2>Senior Marketing Executive</h2>
+        </div>
+        <span class="job-date">Feb 2022 – Oct 2023</span>
+      </div>
+      <div class="job-org"><a href="https://www.qcaregroup.co.uk/" target="_blank" rel="noopener">Quality Care Group</a> &amp; <a href="https://www.pollardspromises.co.uk/" target="_blank" rel="noopener">Pollard's Promises</a>, Brighton</div>
+      <ul>
+        <li>Planned and delivered multi-channel campaigns to build brand awareness and generate leads</li>
+        <li>Managed SEO, content marketing and paid advertising to grow website traffic and enquiries</li>
+        <li>Managed marketing budgets and maintained brand consistency across all digital and offline channels</li>
+        <li>Presented campaign plans and results to senior stakeholders across both businesses</li>
+        <li>Managed event planning and delivery for the company's annual exhibition stand at The Care Show</li>
+      </ul>
+      <a class="job-cta" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        Case study (coming soon)
+      </a>
+    </article>
+
+    <article class="job card">
+      <div class="job-head">
+        <div class="job-title-row">
+          <img class="job-favicon" src="images/favicons/bluestoneb2b.png" alt="">
+          <h2>Business Development Executive</h2>
+        </div>
+        <span class="job-date">Feb 2018 – Feb 2022</span>
+      </div>
+      <div class="job-org"><a href="https://www.bluestoneb2b.co.uk/" target="_blank" rel="noopener">Bluestone B2B</a>, Crawley</div>
+      <ul>
+        <li>Identified and developed new business through proactive outreach and networking</li>
+        <li>Managed the sales pipeline from first contact through negotiation to close</li>
+        <li>Built long-term client relationships to encourage repeat business and referrals</li>
+        <li>Negotiated terms and pricing with prospective clients, working to agreed targets</li>
+        <li>Arranged and attended client meetings, preparing proposals and following up on next steps</li>
+        <li>Managed diaries, correspondence and appointment scheduling alongside daily administrative tasks</li>
+        <li>Maintained accurate records and filing systems, ensuring data was up to date and compliant</li>
+      </ul>
+    </article>
+
+    <article class="job card">
+      <div class="job-head">
+        <div class="job-title-row">
+          <img class="job-favicon" src="images/favicons/berryandson.png" alt="">
+          <h2>Customer Service Assistant</h2>
+        </div>
+        <span class="job-date">Apr 2015 – Feb 2019</span>
+      </div>
+      <div class="job-org"><a href="https://www.berryandson.com/" target="_blank" rel="noopener">Berry &amp; Son</a>, Brighton</div>
+      <ul>
+        <li>Delivered high-quality customer service, product advice and stock/till management in a busy retail environment</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ================= RIGHT ================= -->
+  <aside class="col-right">
+
+    <div class="section summary-col">
+      <h3 class="box-title">Summary</h3>
+      <div class="box-body">
+        <p>Marketing and business development professional with experience across lead generation, client relationships and multi-channel campaigns. Comfortable coordinating CRM systems, sales pipelines and cross-team projects, with the organisation and attention to detail to keep fast-paced operations running smoothly. A clear communicator and natural relationship-builder, equally at home supporting new business, managing client accounts, or providing the administrative backbone a team relies on.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 class="box-title">AI in Marketing</h3>
+      <div class="box-body">
+        <p>I use AI across every stage of my marketing work, but always responsibly. Every output gets a human touch and a human check at each step, so a client or customer never feels they're looking at something AI-generated, or "AI slop". I build detailed prompts and custom tools to get results as close to finished as possible, then apply that final 10% by hand to make sure it's genuinely ready to go out under my name.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 class="box-title">Skills</h3>
+      <div class="box-body">
+        <div class="tags">
+          <span class="tag">Marketing Strategy</span>
+          <span class="tag">Business Development</span>
+          <span class="tag">CRM &amp; Pipelines</span>
+          <span class="tag">Client Relationships</span>
+          <span class="tag">Market Analysis</span>
+          <span class="tag">Budget Management</span>
+          <span class="tag">Administration</span>
+          <span class="tag">SEO &amp; Paid Media</span>
+          <span class="tag">Copywriting</span>
+          <span class="tag">Stakeholder Coordination</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 class="box-title">Software &amp; Platforms</h3>
+      <div class="box-body">
+        <div class="tag-group">
+          <div class="tag-group-label">Design</div>
+          <div class="tags">
+            <span class="tag">Photoshop</span>
+            <span class="tag">Illustrator</span>
+            <span class="tag">InDesign</span>
+            <span class="tag">Premiere Pro</span>
+            <span class="tag">Affinity Designer</span>
+            <span class="tag">Canva</span>
+          </div>
+        </div>
+        <div class="tag-group">
+          <div class="tag-group-label">CRM &amp; Sales</div>
+          <div class="tags">
+            <span class="tag">HubSpot</span>
+            <span class="tag">Salesforce</span>
+          </div>
+        </div>
+        <div class="tag-group">
+          <div class="tag-group-label">Email Marketing</div>
+          <div class="tags">
+            <span class="tag">Mailchimp</span>
+            <span class="tag">Klaviyo</span>
+            <span class="tag">MailerLite</span>
+          </div>
+        </div>
+        <div class="tag-group">
+          <div class="tag-group-label">SEO &amp; Analytics</div>
+          <div class="tags">
+            <span class="tag">SEMrush</span>
+            <span class="tag">Google Analytics</span>
+            <span class="tag">Google Search Console</span>
+          </div>
+        </div>
+        <div class="tag-group">
+          <div class="tag-group-label">Social &amp; Automation</div>
+          <div class="tags">
+            <span class="tag">Buffer</span>
+            <span class="tag">Hootsuite</span>
+            <span class="tag">Zapier</span>
+            <span class="tag">n8n</span>
+          </div>
+        </div>
+        <div class="tag-group">
+          <div class="tag-group-label">AI &amp; Productivity</div>
+          <div class="tags">
+            <span class="tag">ChatGPT</span>
+            <span class="tag">Claude</span>
+            <span class="tag">Notion</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 class="box-title">Education</h3>
+      <div class="box-body">
+        <div class="edu-row">
+          <span class="edu-title">PM Foundation, PRINCE2&reg;</span>
+          <span class="edu-meta">City · 2024–2025</span>
+        </div>
+        <div class="edu-row">
+          <span class="edu-title">BA, Graphic Design</span>
+          <span class="edu-meta">Arden University · 2015–2018</span>
+        </div>
+        <div class="edu-row">
+          <span class="edu-title">Diploma, Creative Leadership</span>
+          <span class="edu-meta">Future London Academy · 2020–2021</span>
+        </div>
+        <div class="edu-row">
+          <span class="edu-title">L2 Diploma, Business Development</span>
+          <span class="edu-meta">Pearson · 2019–2020</span>
+        </div>
+        <div class="edu-row">
+          <span class="edu-title">Certificate, HTML &amp; CSS</span>
+          <span class="edu-meta">Code with Mosh · 2019–2020</span>
+        </div>
+        <div class="edu-row">
+          <span class="edu-title">GCSEs</span>
+          <span class="edu-meta">Patcham High School · 2007–2011</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 class="box-title">Others</h3>
+      <div class="box-body">
+        <div class="vol-item">
+          <span class="vol-title">Full UK Driving Licence</span>
+        </div>
+        <div class="vol-item">
+          <span class="vol-title">Front of House Volunteer</span>
+          <span class="vol-org">Worthing Museum &amp; Art Gallery</span>
+          <p>Welcomed visitors, sold tickets and handled sales at a busy public venue.</p>
+        </div>
+        <div class="vol-item">
+          <span class="vol-title">Volunteer Barista</span>
+          <span class="vol-org">Beans Coffee To Go, Highdown Gardens</span>
+          <p>Ran a mobile coffee van, handling sales, stock and customer service outdoors.</p>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+</main>
+
+<a class="site-credit" href="https://github.com/shanepontet-dev" target="_blank" rel="noopener">
+  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+  Created by Shane
+</a>
+
+<script>
+  document.querySelectorAll('.avatar-stack').forEach(function(stack){
+    function toggle(){ stack.classList.toggle('swapped'); }
+    stack.addEventListener('click', toggle);
+    stack.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
