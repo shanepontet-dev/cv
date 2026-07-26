@@ -636,10 +636,11 @@
   /* ================= RESPONSIVE ================= */
   @media (max-width:920px){
     .layout{ flex-direction:column; align-items:stretch; padding:32px 20px 60px; gap:28px; }
-    .col-left, .col-mid, .col-right > .section{ width:100%; max-width:560px; margin:0 auto; position:static; order:4; }
-    .col-left{ order:1; flex-direction:row; flex-wrap:wrap; }
+    .col-mid, .col-right > .section{ width:100%; max-width:560px; margin:0 auto; position:static; order:6; }
+    .col-left{ display:contents; }
+    .col-left > *{ width:100%; max-width:560px; margin:0 auto; position:static; }
     .profile-card{
-      flex:1 1 100%;
+      order:1;
       display:flex;
       align-items:center;
       gap:36px;
@@ -648,9 +649,11 @@
     .profile-card .avatar-stack{ margin:0; flex:none; }
     .profile-text{ flex:1 1 auto; min-width:0; }
     .profile-card .icon-row{ justify-content:flex-start; }
-    .col-mid{ order:3; }
+    .link-list{ order:2; }
+    .gallery-preview{ order:4; }
+    .col-mid{ order:5; }
     .col-right{ display:contents; }
-    .col-right > .summary-col{ order:2; }
+    .col-right > .summary-col{ order:3; }
   }
 
   .site-credit-row{
