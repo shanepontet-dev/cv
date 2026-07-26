@@ -589,11 +589,16 @@
     .col-right > .summary-col{ order:2; }
   }
 
-  .site-credit{
+  .site-credit-row{
     position:fixed;
     left:16px;
     bottom:16px;
     z-index:1000;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .site-credit{
     display:inline-flex;
     align-items:center;
     gap:6px;
@@ -612,8 +617,23 @@
   .site-credit:hover{ background:var(--dark); border-color:var(--dark); color:var(--dark-text); }
   .site-credit svg{ width:13px; height:13px; flex:none; }
 
+  .pixel-bunny{
+    width:20px;
+    height:20px;
+    flex:none;
+    animation:bunny-float 2.2s ease-in-out infinite;
+  }
+  .pixel-bunny img{ width:100%; height:100%; display:block; image-rendering:pixelated; }
+  @keyframes bunny-float{
+    0%, 100%{ transform:translateY(0); }
+    50%{ transform:translateY(-7px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .pixel-bunny{ animation:none; }
+  }
+
   @media print{
-    .site-credit{ display:none; }
+    .site-credit-row{ display:none; }
     body{ background:#fff; }
     .layout{ max-width:100%; padding:12mm; gap:22px; }
     .col-left{ position:static; }
@@ -796,10 +816,16 @@
         <li>Presented campaign plans and results to senior stakeholders across both businesses</li>
         <li>Managed event planning and delivery for the company's annual exhibition stand at The Care Show</li>
       </ul>
-      <a class="job-cta" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-        Project examples (coming soon)
-      </a>
+      <div class="job-cta-row">
+        <a class="job-cta" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          Project examples (coming soon)
+        </a>
+        <button type="button" class="job-cta gallery-btn" data-gallery-id="qcg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Gallery
+        </button>
+      </div>
       <div class="job-reference">
         <div class="job-reference-label">Reference</div>
         <div><span class="job-reference-name">Alan Ford</span><span class="job-reference-contact"><a href="tel:07341568277">07341 568277</a> · <a href="mailto:alan.ford@qcaregroup.co.uk">alan.ford@qcaregroup.co.uk</a></span></div>
@@ -994,10 +1020,13 @@
 
 </main>
 
-<a class="site-credit" href="https://github.com/shanepontet-dev" target="_blank" rel="noopener">
-  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-  Created by Shane
-</a>
+<div class="site-credit-row">
+  <a class="site-credit" href="https://github.com/shanepontet-dev" target="_blank" rel="noopener">
+    <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+    Created by Shane
+  </a>
+  <div class="pixel-bunny" aria-hidden="true"><img src="bunny.png" alt=""></div>
+</div>
 
 <div class="lightbox-overlay" id="lightbox" hidden>
   <div class="lightbox-box">
@@ -1060,6 +1089,11 @@
       { type:'image', src:'subcold2.png', caption:'Subcold: "Super Beer Fridges" outdoor billboard ad' },
       { type:'image', src:'bowling1.png', caption:'Bowl Central: social media ad set' },
       { type:'video', src:'coapt1.mp4', caption:'Coapt: video ad' }
+    ],
+    qcg: [
+      { type:'image', src:'qcg1.png', caption:'Exhibition stand at The Care Show, Quality Care Group\'s annual trade show presence' },
+      { type:'image', src:'qcg2.png', caption:'Company brochure spread: Awards and Our Values' },
+      { type:'image', src:'qcg3.png', caption:'Website homepage: "The UK\'s largest Independent Insurance Broker for the care sector"' }
     ]
   };
 
