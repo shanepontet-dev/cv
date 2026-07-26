@@ -391,6 +391,25 @@
   .gallery-preview-thumb:hover{ border-color:var(--dark); opacity:.85; }
   .gallery-preview-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
 
+  .cv-download-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:12px 16px;
+    background:var(--dark);
+    color:var(--dark-text);
+    border-radius:.5rem;
+    text-decoration:none;
+    font-family:var(--caps-font);
+    font-size:11px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    transition:opacity .2s ease;
+  }
+  .cv-download-btn:hover{ opacity:.85; }
+  .cv-download-btn svg{ width:15px; height:15px; flex:none; }
+
   .job-cta{
     display:inline-flex;
     align-items:center;
@@ -634,7 +653,7 @@
   /* ================= RESPONSIVE ================= */
   @media (max-width:920px){
     .layout{ flex-direction:column; align-items:stretch; padding:32px 20px 60px; gap:28px; }
-    .col-mid, .col-right > .section{ width:100%; max-width:560px; margin:0 auto; position:static; order:6; }
+    .col-mid, .col-right > .section{ width:100%; max-width:560px; margin:0 auto; position:static; order:7; }
     .col-left{ display:contents; }
     .col-left > *{ width:100%; max-width:560px; margin:0 auto; position:static; }
     .profile-card{
@@ -647,11 +666,12 @@
     .profile-card .avatar-stack{ margin:0; flex:none; }
     .profile-text{ flex:1 1 auto; min-width:0; }
     .profile-card .icon-row{ justify-content:flex-start; }
-    .link-list{ order:2; }
-    .gallery-preview{ order:4; }
-    .col-mid{ order:5; }
+    .cv-download-btn{ order:2; }
+    .link-list{ order:3; }
+    .gallery-preview{ order:5; }
+    .col-mid{ order:6; }
     .col-right{ display:contents; }
-    .col-right > .summary-col{ order:3; }
+    .col-right > .summary-col{ order:4; }
   }
 
   .site-credit-row{
@@ -753,6 +773,11 @@
       <a class="link-row" href="tel:07904056129">07904 056129</a>
       <span class="link-row static">Worthing, West Sussex BN12 6FP</span>
     </nav>
+
+    <a class="cv-download-btn" href="Shane%20Pontet%20CV.pdf" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download CV (PDF)
+    </a>
   </aside>
 
   <!-- ================= MIDDLE ================= -->
@@ -946,9 +971,9 @@
     </div>
 
     <div class="section">
-      <h3 class="box-title">AI in Marketing</h3>
+      <h3 class="box-title">Using AI</h3>
       <div class="box-body">
-        <p>I use AI across every stage of my marketing work, but always responsibly. Every output gets a human touch and a human check at each step, so a client or customer never feels they're looking at something AI-generated, or "AI slop". I build detailed prompts and custom tools to get results as close to finished as possible, then apply that final 10% by hand to make sure it's genuinely ready to go out under my name.</p>
+        <p>I use AI across almost everything I do, not just marketing, but always responsibly. Every output still gets a human touch and a human check at each step, so nobody's ever looking at something that reads as AI-generated or "AI slop." I build detailed prompts and custom tools to get results as close to finished as possible, then apply that final 10% by hand to make sure it's genuinely ready to go out under my name.</p>
       </div>
     </div>
 
@@ -966,6 +991,10 @@
           <span class="tag">SEO &amp; Paid Media</span>
           <span class="tag">Copywriting</span>
           <span class="tag">Stakeholder Coordination</span>
+          <span class="tag">Event Planning &amp; Delivery</span>
+          <span class="tag">Project Management</span>
+          <span class="tag">Graphic Design</span>
+          <span class="tag">AI &amp; Automation</span>
         </div>
       </div>
     </div>
@@ -1162,7 +1191,9 @@
     qcg: [
       { type:'image', src:'qcg1.png', caption:'Exhibition stand at The Care Show, Quality Care Group\'s annual trade show presence' },
       { type:'image', src:'qcg2.png', caption:'Company brochure spread: Awards and Our Values' },
-      { type:'image', src:'qcg3.png', caption:'Website homepage: "The UK\'s largest Independent Insurance Broker for the care sector"' }
+      { type:'image', src:'qcg3.png', caption:'Website homepage: "The UK\'s largest Independent Insurance Broker for the care sector"' },
+      { type:'image', src:'pollard1.jpg', caption:'"Caring for Care": Pollard\'s Promises branded t-shirts at a charity event' },
+      { type:'youtube', videoId:'rZYXV2Z53A0', caption:'Pollard\'s Promises: Colchester Zoo' }
     ],
     controlfreq: [
       { type:'image', src:'cf1.png', caption:'WebAlarm campaign creative: "Real-Time alerts delivered to any device"' },
@@ -1212,6 +1243,12 @@
           btn.innerHTML = pdfIcon;
         } else if(item.type === 'video'){
           btn.innerHTML = videoIcon;
+        } else if(item.type === 'youtube'){
+          var ytThumb = document.createElement('img');
+          ytThumb.src = 'https://i.ytimg.com/vi/' + item.videoId + '/mqdefault.jpg';
+          ytThumb.alt = '';
+          ytThumb.loading = 'lazy';
+          btn.appendChild(ytThumb);
         } else if(item.type === 'link'){
           btn.innerHTML = linkIcon;
         } else if(item.type === 'html'){
@@ -1263,6 +1300,14 @@
         video.controls = true;
         video.autoplay = true;
         stage.appendChild(video);
+      } else if(item.type === 'youtube'){
+        var ytFrame = document.createElement('iframe');
+        ytFrame.src = 'https://www.youtube.com/embed/' + item.videoId;
+        ytFrame.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        ytFrame.setAttribute('allowfullscreen', '');
+        ytFrame.style.aspectRatio = '16 / 9';
+        ytFrame.style.height = 'auto';
+        stage.appendChild(ytFrame);
       } else if(item.type === 'link'){
         var card = document.createElement('div');
         card.className = 'lightbox-link-card';
