@@ -371,6 +371,26 @@
   }
   .job-reference-contact a{ color:inherit; text-decoration-color:var(--underline); }
 
+  .gallery-preview-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:6px;
+  }
+  .gallery-preview-thumb{
+    display:block;
+    padding:0;
+    margin:0;
+    border:1px solid var(--border);
+    border-radius:.4rem;
+    overflow:hidden;
+    cursor:pointer;
+    background:none;
+    aspect-ratio:1 / 1;
+    transition:border-color .2s ease, opacity .2s ease;
+  }
+  .gallery-preview-thumb:hover{ border-color:var(--dark); opacity:.85; }
+  .gallery-preview-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+
   .job-cta-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
   .job-cta{
     display:inline-flex;
@@ -712,6 +732,18 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M4 9.5c4.5 1.4 9.5 1.4 15.3-.4M2.8 15c5-1.2 11-1 14.4 3.3M9 3.2c2.8 3.6 4.5 8 4.7 17.4"/></svg>
           </a>
         </nav>
+      </div>
+    </div>
+
+    <div class="section gallery-preview">
+      <h3 class="box-title">Gallery Preview</h3>
+      <div class="box-body">
+        <div class="gallery-preview-grid">
+          <button type="button" class="gallery-btn gallery-preview-thumb" data-gallery-id="saber" data-index="0" aria-label="View Saber Renewable Energy gallery"><img src="thumbs/saber1.jpg" alt="" loading="lazy"></button>
+          <button type="button" class="gallery-btn gallery-preview-thumb" data-gallery-id="controlfreq" data-index="0" aria-label="View ControlFreq gallery"><img src="thumbs/cf1.jpg" alt="" loading="lazy"></button>
+          <button type="button" class="gallery-btn gallery-preview-thumb" data-gallery-id="foxbear" data-index="0" aria-label="View Fox &amp; Bear gallery"><img src="thumbs/wolf1.jpg" alt="" loading="lazy"></button>
+          <button type="button" class="gallery-btn gallery-preview-thumb" data-gallery-id="qcg" data-index="0" aria-label="View Quality Care Group gallery"><img src="thumbs/qcg1.jpg" alt="" loading="lazy"></button>
+        </div>
       </div>
     </div>
 
@@ -1290,7 +1322,8 @@
       btn.addEventListener('click', function(){
         var id = btn.getAttribute('data-gallery-id');
         var items = galleries[id];
-        if(items) open(items, 0);
+        var startIndex = parseInt(btn.getAttribute('data-index') || '0', 10);
+        if(items) open(items, startIndex);
       });
     });
 
