@@ -391,14 +391,13 @@
   .gallery-preview-thumb:hover{ border-color:var(--dark); opacity:.85; }
   .gallery-preview-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
 
-  .job-cta-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
   .job-cta{
     display:inline-flex;
     align-items:center;
     gap:6px;
     margin-top:16px;
     padding:7px 14px;
-    border:1px dashed #d8dade;
+    border:1px solid var(--border);
     border-radius:1em;
     background:var(--title-bg);
     font-family:var(--caps-font);
@@ -409,11 +408,10 @@
     cursor:pointer;
     -webkit-appearance:none;
     appearance:none;
+    transition:background .3s ease, color .3s ease, border-color .3s ease;
   }
-  .job-cta{ transition:background .3s ease, color .3s ease, border-color .3s ease; }
   .job-cta:hover{ background:var(--dark); border-color:var(--dark); color:var(--dark-text); }
   .job-cta svg{ width:11px; height:11px; flex:none; }
-  .job-cta-row .job-cta{ margin-top:0; }
 
   /* ================= LIGHTBOX ================= */
   .lightbox-overlay{
@@ -778,16 +776,10 @@
         <li>Built an internal project deck for a 251.9 MWp solar PPA programme across 525 surveyed sites, covering grid status and live recommissions</li>
         <li>Managed a LinkedIn paid campaign targeting director-level prospects at UK manufacturing companies with 200+ employees</li>
       </ul>
-      <div class="job-cta-row">
-        <a class="job-cta" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-          Project examples (coming soon)
-        </a>
-        <button type="button" class="job-cta gallery-btn" data-gallery-id="saber">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          Gallery
-        </button>
-      </div>
+      <button type="button" class="job-cta gallery-btn" data-gallery-id="saber">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Gallery
+      </button>
       <div class="job-reference">
         <div class="job-reference-label">Reference</div>
         <div><span class="job-reference-name">Jess Wilkinson</span><span class="job-reference-contact"><a href="tel:07947640702">07947 640702</a> · <a href="mailto:jess@saberrenewables.com">jess@saberrenewables.com</a></span></div>
@@ -812,16 +804,10 @@
         <li>Plan content calendars and produce marketing materials across web, email and social channels</li>
         <li>Analyse campaign performance and market trends to sharpen commercial positioning and improve conversion</li>
       </ul>
-      <div class="job-cta-row">
-        <a class="job-cta" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-          Project examples (coming soon)
-        </a>
-        <button type="button" class="job-cta gallery-btn" data-gallery-id="controlfreq">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          Gallery
-        </button>
-      </div>
+      <button type="button" class="job-cta gallery-btn" data-gallery-id="controlfreq">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Gallery
+      </button>
       <div class="job-reference">
         <div class="job-reference-label">Reference</div>
         <div><span class="job-reference-name">Steph Battams</span><span class="job-reference-contact"><a href="tel:07503929805">07503 929805</a> · <a href="mailto:steph@controlfreq.uk">steph@controlfreq.uk</a></span></div>
@@ -845,6 +831,11 @@
         <li>Coordinated email marketing, website updates and social media, and conducted market research on prospects</li>
       </ul>
 
+      <button type="button" class="job-cta gallery-btn" data-gallery-id="foxbear">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Gallery
+      </button>
+
       <div class="client-logos">
         <div class="client-logos-label">Agency brands worked with</div>
         <div class="logo-scroller">
@@ -865,16 +856,6 @@
             <a class="logo-chip" href="https://bowlcentral.co.uk/" target="_blank" rel="noopener" aria-label="Bowl Central"><img src="bowlcentral.png" alt="Bowl Central"></a>
           </div>
         </div>
-      </div>
-      <div class="job-cta-row">
-        <a class="job-cta" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-          Project examples (coming soon)
-        </a>
-        <button type="button" class="job-cta gallery-btn" data-gallery-id="foxbear">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          Gallery
-        </button>
       </div>
       <div class="job-reference">
         <div class="job-reference-label">Reference</div>
@@ -901,16 +882,10 @@
         <li>Presented campaign plans and results to senior stakeholders across both businesses</li>
         <li>Managed event planning and delivery for the company's annual exhibition stand at The Care Show</li>
       </ul>
-      <div class="job-cta-row">
-        <a class="job-cta" href="#" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-          Project examples (coming soon)
-        </a>
-        <button type="button" class="job-cta gallery-btn" data-gallery-id="qcg">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          Gallery
-        </button>
-      </div>
+      <button type="button" class="job-cta gallery-btn" data-gallery-id="qcg">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        Gallery
+      </button>
       <div class="job-reference">
         <div class="job-reference-label">Reference</div>
         <div><span class="job-reference-name">Alan Ford</span><span class="job-reference-contact"><a href="tel:07341568277">07341 568277</a> · <a href="mailto:alan.ford@qcaregroup.co.uk">alan.ford@qcaregroup.co.uk</a></span></div>
