@@ -472,6 +472,8 @@
     letter-spacing:.03em;
   }
   .lightbox-link-btn svg{ width:13px; height:13px; }
+  .lightbox-pdf-icon{ color:#9296a0; margin-bottom:16px; }
+  .lightbox-pdf-icon svg{ width:40px; height:40px; }
   .lightbox-caption{
     padding:12px 16px;
     font-size:12px;
@@ -1215,12 +1217,21 @@
     function render(){
       var item = currentItems[currentIndex];
       stage.innerHTML = '';
-      stage.className = 'lightbox-stage' + (item.type === 'link' ? ' is-link' : '');
+      var pdfOnSmallScreen = item.type === 'pdf' && window.matchMedia('(max-width: 820px)').matches;
+      stage.className = 'lightbox-stage' + (item.type === 'link' || pdfOnSmallScreen ? ' is-link' : '');
       if(item.type === 'image'){
         var img = document.createElement('img');
         img.src = item.src;
         img.alt = item.caption || '';
         stage.appendChild(img);
+      } else if(item.type === 'pdf' && pdfOnSmallScreen){
+        var pdfCard = document.createElement('div');
+        pdfCard.className = 'lightbox-link-card';
+        pdfCard.innerHTML =
+          '<div class="lightbox-pdf-icon">' + pdfIcon + '</div>' +
+          '<p class="lightbox-link-desc">' + (item.caption || '') + '</p>' +
+          '<a class="lightbox-link-btn" href="' + item.src + '" target="_blank" rel="noopener">Open PDF ' + linkIcon + '</a>';
+        stage.appendChild(pdfCard);
       } else if(item.type === 'pdf'){
         var iframe = document.createElement('iframe');
         iframe.src = item.src;
