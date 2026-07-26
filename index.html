@@ -430,6 +430,48 @@
   .lightbox-stage img{ max-width:100%; max-height:75vh; object-fit:contain; display:block; }
   .lightbox-stage iframe{ width:100%; height:75vh; border:0; background:#fff; }
   .lightbox-stage video{ max-width:100%; max-height:75vh; }
+  .lightbox-stage.is-link{ background:var(--card-alt); padding:32px; }
+  .lightbox-link-card{
+    max-width:440px;
+    width:100%;
+    text-align:center;
+  }
+  .lightbox-link-tag{
+    font-family:var(--caps-font);
+    font-size:10px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:#9296a0;
+    margin-bottom:10px;
+    display:block;
+  }
+  .lightbox-link-title{
+    font-family:var(--heading-font);
+    font-weight:600;
+    font-size:20px;
+    color:var(--heading);
+    margin-bottom:12px;
+  }
+  .lightbox-link-desc{
+    font-size:13px;
+    line-height:1.65;
+    color:#575a65;
+    margin-bottom:24px;
+  }
+  .lightbox-link-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 20px;
+    background:var(--dark);
+    color:var(--dark-text);
+    border-radius:1em;
+    text-decoration:none;
+    font-family:var(--caps-font);
+    font-size:11px;
+    letter-spacing:.03em;
+  }
+  .lightbox-link-btn svg{ width:13px; height:13px; }
   .lightbox-caption{
     padding:12px 16px;
     font-size:12px;
@@ -733,10 +775,16 @@
         <li>Plan content calendars and produce marketing materials across web, email and social channels</li>
         <li>Analyse campaign performance and market trends to sharpen commercial positioning and improve conversion</li>
       </ul>
-      <a class="job-cta" href="#" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-        Project examples (coming soon)
-      </a>
+      <div class="job-cta-row">
+        <a class="job-cta" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          Project examples (coming soon)
+        </a>
+        <button type="button" class="job-cta gallery-btn" data-gallery-id="controlfreq">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Gallery
+        </button>
+      </div>
       <div class="job-reference">
         <div class="job-reference-label">Reference</div>
         <div><span class="job-reference-name">Steph Battams</span><span class="job-reference-contact"><a href="tel:07503929805">07503 929805</a> · <a href="mailto:steph@controlfreq.uk">steph@controlfreq.uk</a></span></div>
@@ -1066,7 +1114,16 @@
       { type:'pdf', src:'saber2.pdf', caption:'The white paper: "Finding the Perfect Blend of Renewables for UK Manufacturers"' },
       { type:'image', src:'Saber3.jpeg', caption:'Event promo creative: Solar and Storage Live, ExCeL London' },
       { type:'image', src:'saber4.jpeg', caption:'White paper launch creative: "Blended renewables for UK Manufacturing"' },
-      { type:'image', src:'saber5.jpeg', caption:'LinkedIn article creative: "UK Energy Costs Are Forcing Manufacturers Out"' }
+      { type:'image', src:'saber5.jpeg', caption:'LinkedIn article creative: "UK Energy Costs Are Forcing Manufacturers Out"' },
+      { type:'link', url:'https://saberrenewables.com/case-studies-preston-north-end-fc/', title:'Preston North End FC', tag:'Energy IQ', caption:'How Saber funded a blended solar PV and CHP system at Deepdale under a 15-year PPA. Zero capital outlay, £1.56m in projected savings, up to 80% on-site generation.' },
+      { type:'link', url:'https://www.linkedin.com/pulse/most-manufacturers-negotiating-wrong-line-energy-bill-voize/?trackingId=eLQk%2BtrRB88CCSjMFHdlIg%3D%3D', title:'Most manufacturers are negotiating the wrong line on their energy bill', tag:'LinkedIn Article', caption:'Read the full article on LinkedIn.', linkLabel:'Read article' },
+      { type:'link', url:'https://www.linkedin.com/pulse/renewable-solution-actually-covers-your-overnight-shift-9dnpe/?trackingId=uuiW4941bJ1Qf6hPmLgHVw%3D%3D', title:'The renewable solution that actually covers your overnight shift', tag:'LinkedIn Article', caption:'Read the full article on LinkedIn.', linkLabel:'Read article' },
+      { type:'link', url:'https://saberrenewables.com/manufacturing/', title:'Powering Efficiency, Resilience & Competitiveness', tag:'Powering UK Manufacturing', caption:'Saber Renewables\' manufacturing sector page, covering bespoke on-site energy solutions that cut operational costs, improve power resilience and support sustainability targets.', linkLabel:'Visit page' },
+      { type:'image', src:'whitepaper_nurture_sequence_flow_saber.svg', caption:'Email nurture sequence flow built for the white paper campaign' },
+      { type:'html', src:'edie_LCAW_Activity_Checklist.html', caption:'Activity checklist for the edie London Climate Action Week 2026 branding partnership, framing the manufacturing white paper through a sustainability lens' },
+      { type:'pdf', src:'PNE-Case-Study.pdf', caption:'Project profile: Preston North End FC, 80% site generation, £1.56m saving over term, zero capital outlay' },
+      { type:'pdf', src:'PNE%20and%20Saber%20Joint%20Marketing%20Plan.pdf', caption:'Joint marketing plan: Preston North End x Saber Renewables' },
+      { type:'pdf', src:'Saber%20Client%20Brochure.pdf', caption:'Saber client brochure: "Fully Funded, Blended for Your Estate"' }
     ],
     foxbear: [
       { type:'image', src:'wolf1.webp', caption:'Wolf 1834: outdoor billboard campaign for the MIMI bag collection' },
@@ -1094,6 +1151,15 @@
       { type:'image', src:'qcg1.png', caption:'Exhibition stand at The Care Show, Quality Care Group\'s annual trade show presence' },
       { type:'image', src:'qcg2.png', caption:'Company brochure spread: Awards and Our Values' },
       { type:'image', src:'qcg3.png', caption:'Website homepage: "The UK\'s largest Independent Insurance Broker for the care sector"' }
+    ],
+    controlfreq: [
+      { type:'image', src:'cf1.png', caption:'WebAlarm campaign creative: "Real-Time alerts delivered to any device"' },
+      { type:'image', src:'cf2.png', caption:'WebAlarm campaign set: "How WebAlarm actually works" (Connect, Monitor, Notify)' },
+      { type:'image', src:'cf3.png', caption:'WebAlarm campaign creative: "How WebAlarm actually works"' },
+      { type:'image', src:'cf4.png', caption:'Lift-monitoring campaign creative: "A fully compliant lift-monitoring solution"' },
+      { type:'image', src:'cf5.png', caption:'Connectivity campaign creative: "Coverage in every location"' },
+      { type:'image', src:'cf6.png', caption:'Asset-monitoring campaign creative: "Connected assets, continuous insight, zero downtime"' },
+      { type:'link', url:'https://controlfreq.co.uk/case-studies/apcoa-parking', title:'Apcoa Parking case study', tag:'Car park · Access Control', caption:'APCOA PARKING partnered with ControlFreq to implement an API-managed 4G access control system, enabling seamless, automated user access and boosting efficiency and revenue.' }
     ]
   };
 
@@ -1108,6 +1174,8 @@
 
     var pdfIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>';
     var videoIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="5" width="15" height="14" rx="2"/><polygon points="23 7 16 12 23 17 23 7"/></svg>';
+    var linkIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>';
+    var htmlIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><circle cx="6.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="9" cy="6.5" r=".5" fill="currentColor"/></svg>';
 
     function buildThumbs(){
       thumbsEl.innerHTML = '';
@@ -1125,6 +1193,10 @@
           btn.innerHTML = pdfIcon;
         } else if(item.type === 'video'){
           btn.innerHTML = videoIcon;
+        } else if(item.type === 'link'){
+          btn.innerHTML = linkIcon;
+        } else if(item.type === 'html'){
+          btn.innerHTML = htmlIcon;
         }
         btn.addEventListener('click', function(){ currentIndex = i; render(); });
         thumbsEl.appendChild(btn);
@@ -1143,6 +1215,7 @@
     function render(){
       var item = currentItems[currentIndex];
       stage.innerHTML = '';
+      stage.className = 'lightbox-stage' + (item.type === 'link' ? ' is-link' : '');
       if(item.type === 'image'){
         var img = document.createElement('img');
         img.src = item.src;
@@ -1152,15 +1225,28 @@
         var iframe = document.createElement('iframe');
         iframe.src = item.src;
         stage.appendChild(iframe);
+      } else if(item.type === 'html'){
+        var htmlFrame = document.createElement('iframe');
+        htmlFrame.src = item.src;
+        stage.appendChild(htmlFrame);
       } else if(item.type === 'video'){
         var video = document.createElement('video');
         video.src = item.src;
         video.controls = true;
         video.autoplay = true;
         stage.appendChild(video);
+      } else if(item.type === 'link'){
+        var card = document.createElement('div');
+        card.className = 'lightbox-link-card';
+        card.innerHTML =
+          (item.tag ? '<span class="lightbox-link-tag">' + item.tag + '</span>' : '') +
+          '<div class="lightbox-link-title">' + item.title + '</div>' +
+          '<p class="lightbox-link-desc">' + (item.caption || '') + '</p>' +
+          '<a class="lightbox-link-btn" href="' + item.url + '" target="_blank" rel="noopener">' + (item.linkLabel || 'Open case study') + ' ' + linkIcon + '</a>';
+        stage.appendChild(card);
       }
       counter.textContent = (currentIndex + 1) + ' / ' + currentItems.length;
-      captionText.textContent = item.caption || '';
+      captionText.textContent = item.type === 'link' ? item.title : (item.caption || '');
       updateActiveThumb();
     }
 

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>edie LCAW Activity Checklist | Saber Renewable Energy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" />
+<style>
+  :root {
+    --navy: #0D2237;
+    --blue: #044D73;
+    --green: #7CC061;
+    --green-soft: #EAF4DC;
+    --green-deep: #5FA049;
+    --tint: #F7F9FB;
+    --panel: #ECF1F6;
+    --border: #DAE1E9;
+    --border-soft: #ECF1F6;
+    --text: #1A1A1A;
+    --muted: #55606E;
+    --soft: #6B7380;
+    --amber: #C97A1B;
+    --amber-soft: #FBEDD7;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--tint);
+    color: var(--text);
+    line-height: 1.55;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============ HEADER ============ */
+  .hero {
+    background: var(--navy);
+    color: #fff;
+    padding: 56px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: var(--green);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -100px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(124,192,97,0.15), transparent 65%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--green);
+    margin-bottom: 18px;
+  }
+  .hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 1.05;
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.78);
+    max-width: 720px;
+    line-height: 1.5;
+  }
+  .hero-meta {
+    margin-top: 32px;
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    border-top: 1px solid rgba(124,192,97,0.35);
+  }
+  .meta-item .meta-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--green);
+  }
+  .meta-item .meta-value {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 4px;
+    color: #fff;
+  }
+
+  /* ============ MAIN ============ */
+  main { padding: 48px 0 80px; }
+
+  /* Section title */
+  .section-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--green-deep);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    color: var(--text);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  /* Summary panel */
+  .summary {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--blue);
+    border-radius: 6px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 1px 3px rgba(13,34,55,0.04);
+  }
+  .summary p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .summary p + p { margin-top: 14px; }
+  .summary strong { color: var(--blue); font-weight: 600; }
+
+  /* Why these dates callout */
+  .why-dates {
+    background: var(--green-soft);
+    border: 1px solid #C7E1B3;
+    border-radius: 6px;
+    padding: 22px 28px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .why-dates .why-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--green-deep);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .why-dates .why-label::before {
+    content: '';
+    display: inline-block;
+    width: 14px; height: 14px;
+    background: var(--green-deep);
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='currentColor' d='M11 7h2v6h-2zm0 8h2v2h-2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/></svg>") center/contain no-repeat;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='currentColor' d='M11 7h2v6h-2zm0 8h2v2h-2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/></svg>") center/contain no-repeat;
+  }
+  .why-dates p {
+    font-size: 14px;
+    color: #2C4A1F;
+    line-height: 1.55;
+  }
+  .why-dates p + p { margin-top: 10px; }
+
+  /* Progress strip */
+  .progress {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .progress-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--blue);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+  .progress-bar-wrap {
+    flex: 1;
+    height: 8px;
+    background: var(--panel);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green) 0%, var(--green-deep) 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+  }
+  .progress-count {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text);
+    min-width: 50px;
+    text-align: right;
+  }
+
+  /* Asset card */
+  .asset {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(13,34,55,0.04);
+    transition: box-shadow 0.2s ease;
+  }
+  .asset:hover { box-shadow: 0 4px 12px rgba(13,34,55,0.08); }
+  .asset.done { opacity: 0.65; }
+  .asset.done .asset-header { background: var(--panel); }
+
+  /* Asset header */
+  .asset-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: center;
+    padding: 22px 28px;
+    background: var(--navy);
+    color: #fff;
+    border-bottom: 3px solid var(--green);
+  }
+  .asset-num {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 38px;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .asset-title-wrap .asset-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .asset-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 21px;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .deadline-pill {
+    background: #fff;
+    color: var(--navy);
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-align: right;
+    min-width: 160px;
+  }
+  .deadline-pill .deadline-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    color: var(--blue);
+    text-transform: uppercase;
+  }
+  .deadline-pill .deadline-date {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--navy);
+    margin-top: 3px;
+  }
+  .deadline-pill .deadline-remaining {
+    font-size: 11px;
+    color: var(--soft);
+    margin-top: 2px;
+    font-style: italic;
+  }
+  .deadline-pill.urgent .deadline-remaining { color: var(--amber); font-weight: 600; font-style: normal; }
+  .deadline-pill.tight { background: var(--amber-soft); }
+  .deadline-pill.tight .deadline-label { color: var(--amber); }
+
+  /* Asset body */
+  .asset-body {
+    padding: 24px 28px 8px;
+  }
+  .spec-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 22px;
+  }
+  .spec {
+    flex: 0 1 auto;
+  }
+  .spec-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    color: var(--green-deep);
+    margin-bottom: 3px;
+  }
+  .spec-value {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* Content direction */
+  .direction-block {
+    margin-bottom: 22px;
+  }
+  .direction-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+  .direction-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 14px;
+    padding: 8px 0;
+    align-items: start;
+  }
+  .direction-row + .direction-row {
+    border-top: 1px dotted var(--border);
+  }
+  .direction-key {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--soft);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-top: 2px;
+  }
+  .direction-val {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  /* Action items */
+  .actions {
+    background: var(--tint);
+    margin: 0 -28px -8px;
+    padding: 22px 28px 24px;
+    border-top: 1px solid var(--border-soft);
+  }
+  .actions-label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--blue);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .actions-count {
+    font-size: 11px;
+    color: var(--soft);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  .check-list { list-style: none; }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px dotted var(--border);
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s ease;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-item input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--soft);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  }
+  .check-box::after {
+    content: '';
+    width: 10px; height: 6px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-45deg) translate(1px, -1px);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  .check-item:hover .check-box { border-color: var(--blue); }
+  .check-item.checked .check-box {
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .check-item.checked .check-box::after { opacity: 1; }
+  .check-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .check-item.checked .check-text {
+    color: var(--soft);
+    text-decoration: line-through;
+    text-decoration-color: var(--soft);
+  }
+
+  /* Footer */
+  .doc-footer {
+    margin-top: 64px;
+    padding: 28px 0 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--soft);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .doc-footer .footer-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: var(--blue);
+  }
+  .print-btn {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .print-btn:hover { background: var(--navy); }
+
+  /* Mobile */
+  @media (max-width: 720px) {
+    .container { padding: 0 20px; }
+    .hero { padding: 40px 0 48px; }
+    .hero-title { font-size: 30px; }
+    .hero-sub { font-size: 16px; }
+    .hero-meta { gap: 24px; }
+    .asset-header {
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+    }
+    .deadline-pill {
+      grid-column: 1 / -1;
+      text-align: left;
+      min-width: 0;
+    }
+    .asset-num { font-size: 30px; }
+    .asset-title { font-size: 17px; }
+    .direction-row { grid-template-columns: 1fr; gap: 4px; }
+    .direction-key { padding-top: 0; }
+    .actions { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; font-size: 11pt; }
+    .hero { background: #fff !important; color: var(--navy); page-break-inside: avoid; padding: 24px 0; }
+    .hero-title { color: var(--navy); font-size: 28pt; }
+    .hero-sub { color: var(--text); }
+    .hero-eyebrow, .meta-item .meta-label { color: var(--green-deep); }
+    .meta-item .meta-value { color: var(--navy); }
+    .hero-meta { border-color: var(--border); }
+    .hero::before { background: var(--green); }
+    .hero::after { display: none; }
+    .asset-header { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .asset { page-break-inside: avoid; box-shadow: none; border: 1px solid var(--border); }
+    .check-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .print-btn, .progress { display: none; }
+    .doc-footer { page-break-inside: avoid; }
+    main { padding-top: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">CAMPAIGN&nbsp;&nbsp;|&nbsp;&nbsp;EDIE LCAW BRANDING PARTNER</div>
+    <h1 class="hero-title">Activity checklist:<br/>edie, London Climate Action Week 2026</h1>
+    <p class="hero-sub">Four assets. Four deadlines. One sustainability angle on the manufacturing white paper.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="meta-label">LEAD</div>
+        <div class="meta-value">Shane Pontet</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">PUBLISHER</div>
+        <div class="meta-value">edie (Laura Tudor)</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">PACKAGE</div>
+        <div class="meta-value">&pound;5,000 + VAT</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">FIRST DEADLINE</div>
+        <div class="meta-value">Fri 12 Jun 2026</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <!-- Summary -->
+    <div class="summary">
+      <p>Our Q2 anchor asset is a <strong>Manufacturing white paper</strong>. For edie specifically, we are angling all four assets below around <strong>London Climate Action Week 2026</strong> (week commencing 22 June). LCAW is edie's largest event of the year and traffic peaks across every format. By framing the manufacturing white paper through a sustainability lens for this campaign, we ride that traffic spike and reach edie's sustainability director readership when they are most engaged.</p>
+      <p>This document covers <strong>edie only</strong>. Separate deadline schedules will follow for The Energyst, The Manufacturer, and the wider content cascade.</p>
+    </div>
+
+    <!-- Why these dates -->
+    <div class="why-dates">
+      <div class="why-label">WHY THESE DATES</div>
+      <p>Every publish date below was recommended by Laura at edie. She knows when each format spikes for her audience. The day of LCAW is not always the best moment to publish long-form content, attention is split between live event coverage and on-demand reading.</p>
+      <p>The thought leadership blog in the first week of July is timed deliberately to <strong>support the month-long banner</strong>. The two assets work together, compounding visibility through July rather than spiking on a single day.</p>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress">
+      <span class="progress-text">PROGRESS</span>
+      <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar"></div></div>
+      <span class="progress-count" id="progressCount">0 / 0</span>
+    </div>
+
+    <!-- =================== ASSET 01 =================== -->
+    <article class="asset" data-asset="eshot">
+      <div class="asset-header">
+        <div class="asset-num">01</div>
+        <div class="asset-title-wrap">
+          <div class="asset-eyebrow">DURING LCAW WEEK&nbsp;&nbsp;|&nbsp;&nbsp;EDIE SENDS ON OUR BEHALF</div>
+          <div class="asset-title">Targeted e-shot</div>
+        </div>
+        <div class="deadline-pill tight">
+          <div class="deadline-label">Assets due</div>
+          <div class="deadline-date">Fri 12 Jun</div>
+          <div class="deadline-remaining" data-deadline="2026-06-12"></div>
+        </div>
+      </div>
+      <div class="asset-body">
+        <div class="spec-row">
+          <div class="spec">
+            <div class="spec-label">FORMAT</div>
+            <div class="spec-value">HTML email, edie sends on our behalf</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">AUDIENCE</div>
+            <div class="spec-value">2,000 segmented by sector and job profile</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">BENCHMARKS</div>
+            <div class="spec-value">28% open rate, 11% CTOR</div>
+          </div>
+        </div>
+
+        <div class="direction-block">
+          <div class="direction-label">CONTENT DIRECTION</div>
+          <div class="direction-row">
+            <div class="direction-key">Angle</div>
+            <div class="direction-val">Position blended PPAs as the financial mechanism that delivers the board's decarbonisation mandate without capital outlay. LCAW themes (climate commitments, sustainability targets) as the hook. The white paper is the supporting evidence.</div>
+          </div>
+          <div class="direction-row">
+            <div class="direction-key">Tone</div>
+            <div class="direction-val">Peer-to-peer with sustainability directors. They already believe in the mandate. They need a route to execution that does not require new capex. That is our angle.</div>
+          </div>
+          <div class="direction-row">
+            <div class="direction-key">CTA</div>
+            <div class="direction-val">Single, clear download CTA pointing to the gated white paper landing page with UTM tracking for attribution.</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <div class="actions-label">ACTION ITEMS <span class="actions-count">5 tasks</span></div>
+          <ul class="check-list">
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Confirm target audience profile criteria with Laura (sectors, job titles, seniority)</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Draft HTML email copy on the LCAW sustainability angle</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Source or commission supporting images (Saber brand, energy wave asset)</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Internal sign-off on copy from Rob and Gerry</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Send HTML email, supporting images, and target profile sheet to Laura at edie</div></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- =================== ASSET 02 =================== -->
+    <article class="asset" data-asset="mpu">
+      <div class="asset-header">
+        <div class="asset-num">02</div>
+        <div class="asset-title-wrap">
+          <div class="asset-eyebrow">RUNS THROUGHOUT LCAW WEEK</div>
+          <div class="asset-title">Newsletter MPU placement</div>
+        </div>
+        <div class="deadline-pill">
+          <div class="deadline-label">Assets due</div>
+          <div class="deadline-date">Thu 18 Jun</div>
+          <div class="deadline-remaining" data-deadline="2026-06-18"></div>
+        </div>
+      </div>
+      <div class="asset-body">
+        <div class="spec-row">
+          <div class="spec">
+            <div class="spec-label">FORMAT</div>
+            <div class="spec-value">MPU display ad in edie newsletter</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">AUDIENCE</div>
+            <div class="spec-value">87,000+ newsletter subscribers</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">DURATION</div>
+            <div class="spec-value">Throughout LCAW week</div>
+          </div>
+        </div>
+
+        <div class="direction-block">
+          <div class="direction-label">CONTENT DIRECTION</div>
+          <div class="direction-row">
+            <div class="direction-key">Angle</div>
+            <div class="direction-val">LCAW-tied visual hook. Sustainability framing of the manufacturing white paper. Short headline, strong Saber brand, single CTA.</div>
+          </div>
+          <div class="direction-row">
+            <div class="direction-key">Tone</div>
+            <div class="direction-val">Visual-led, not copy-led. Strong colour contrast. Designed to be read at a glance inside a newsletter, not studied. Keep headline under 8 words.</div>
+          </div>
+          <div class="direction-row">
+            <div class="direction-key">CTA</div>
+            <div class="direction-val">Read the white paper. Direct link to the gated landing page, UTM tagged for edie MPU.</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <div class="actions-label">ACTION ITEMS <span class="actions-count">5 tasks</span></div>
+          <ul class="check-list">
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Confirm exact MPU dimensions with Laura (typically 300x250)</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Brief MPU creative on the sustainability angle and headline</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Confirm landing page URL with UTM tracking</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Internal sign-off on creative</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Send MPU artwork and URL to Laura at edie</div></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- =================== ASSET 03 =================== -->
+    <article class="asset" data-asset="banner">
+      <div class="asset-header">
+        <div class="asset-num">03</div>
+        <div class="asset-title-wrap">
+          <div class="asset-eyebrow">ACTIVATION 1 JULY&nbsp;&nbsp;|&nbsp;&nbsp;RUNS FOR ONE MONTH</div>
+          <div class="asset-title">Billboard banner on edie.net</div>
+        </div>
+        <div class="deadline-pill">
+          <div class="deadline-label">Assets due</div>
+          <div class="deadline-date">Mon 29 Jun</div>
+          <div class="deadline-remaining" data-deadline="2026-06-29"></div>
+        </div>
+      </div>
+      <div class="asset-body">
+        <div class="spec-row">
+          <div class="spec">
+            <div class="spec-label">FORMAT</div>
+            <div class="spec-value">Billboard banner, edie.net run of site</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">REACH</div>
+            <div class="spec-value">~38,671 views per month</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">DURATION</div>
+            <div class="spec-value">One month, throughout July</div>
+          </div>
+        </div>
+
+        <div class="direction-block">
+          <div class="direction-label">CONTENT DIRECTION</div>
+          <div class="direction-row">
+            <div class="direction-key">Angle</div>
+            <div class="direction-val">Sustained presence through July. Pairs visually and thematically with the blog post going live in the first week of July. Banner and blog reinforce each other.</div>
+          </div>
+          <div class="direction-row">
+            <div class="direction-key">Tone</div>
+            <div class="direction-val">Same visual language as the MPU but adapted to the wider banner aspect ratio (typically 970x250 leaderboard). Should look like a continuation of the LCAW activity, not a standalone ad.</div>
+          </div>
+          <div class="direction-row">
+            <div class="direction-key">CTA</div>
+            <div class="direction-val">Read the white paper. UTM tagged separately so we can measure banner performance versus MPU performance.</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <div class="actions-label">ACTION ITEMS <span class="actions-count">6 tasks</span></div>
+          <ul class="check-list">
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Confirm exact banner dimensions and file specs with Laura</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Brief banner creative, ensure visual continuity with the MPU</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Confirm landing page URL with separate UTM for banner attribution</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Align banner messaging with the blog post angle (asset 04) for compounding effect</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Internal sign-off on creative</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Send banner artwork and URL to Laura at edie</div></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <!-- =================== ASSET 04 =================== -->
+    <article class="asset" data-asset="blog">
+      <div class="asset-header">
+        <div class="asset-num">04</div>
+        <div class="asset-title-wrap">
+          <div class="asset-eyebrow">GO-LIVE: WEEK COMMENCING 6 JULY (TBC WITH LAURA)</div>
+          <div class="asset-title">Thought leadership blog post</div>
+        </div>
+        <div class="deadline-pill">
+          <div class="deadline-label">Submit by</div>
+          <div class="deadline-date">Early Jul</div>
+          <div class="deadline-remaining" data-deadline="2026-07-02"></div>
+        </div>
+      </div>
+      <div class="asset-body">
+        <div class="spec-row">
+          <div class="spec">
+            <div class="spec-label">FORMAT</div>
+            <div class="spec-value">1,000-word article on edie.net, Saber byline</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">PROMOTION</div>
+            <div class="spec-value">5 newsletter appearances over one week, 66,000+ subscribers</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">BENCHMARK</div>
+            <div class="spec-value">250+ average views</div>
+          </div>
+        </div>
+
+        <div class="direction-block">
+          <div class="direction-label">CONTENT DIRECTION</div>
+          <div class="direction-row">
+            <div class="direction-key">Angle</div>
+            <div class="direction-val">Written for sustainability directors. How to turn board-level decarbonisation pressure into a funded, multi-site programme without arguing for capex. Stands alone but references the white paper as the deeper evidence base.</div>
+          </div>
+          <div class="direction-row">
+            <div class="direction-key">Structure</div>
+            <div class="direction-val">Open with the problem (mandate without budget). Build the case (blended PPAs as the answer). Back it with data from the white paper. Close with a clear next step. No hard sell.</div>
+          </div>
+          <div class="direction-row">
+            <div class="direction-key">Tone</div>
+            <div class="direction-val">Peer-to-peer with sustainability directors. Use their language: Scope 1 and 2, SBTi, internal carbon pricing. Less of the energy manager's language (kWh, peak demand, load shifting).</div>
+          </div>
+          <div class="direction-row">
+            <div class="direction-key">Pairing</div>
+            <div class="direction-val">This blog is timed to support the month-long banner (asset 03). Both go live in the first week of July, both share the same sustainability framing, both drive to the same white paper landing page.</div>
+          </div>
+          <div class="direction-row">
+            <div class="direction-key">CTA</div>
+            <div class="direction-val">Inline link to the gated white paper landing page. UTM tagged for blog attribution.</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <div class="actions-label">ACTION ITEMS <span class="actions-count">6 tasks</span></div>
+          <ul class="check-list">
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Agree byline with Rob (David Wills, Gerry Nicell, or shared author credit)</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Outline article on the sustainability director angle</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Draft 1,000 words</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Internal sign-off from Rob, Gerry, and David if attributed to him</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Confirm exact go-live date with Laura</div></li>
+            <li class="check-item"><div class="check-box"></div><div class="check-text">Submit copy and any supporting images to Laura at least two working days before go-live</div></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <div class="doc-footer">
+      <div>
+        <div class="footer-brand">Saber Renewable Energy</div>
+        <div style="margin-top: 4px;">edie LCAW Activity Checklist&nbsp;&nbsp;|&nbsp;&nbsp;Internal use only</div>
+      </div>
+      <button class="print-btn" onclick="window.print()">PRINT CHECKLIST</button>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  // Compute days remaining for each deadline
+  function updateDeadlines() {
+    const now = new Date();
+    now.setHours(0,0,0,0);
+    document.querySelectorAll('[data-deadline]').forEach(el => {
+      const target = new Date(el.dataset.deadline + 'T00:00:00');
+      const diffMs = target - now;
+      const days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+      let text;
+      if (days < 0) text = (-days) + ' days overdue';
+      else if (days === 0) text = 'Due today';
+      else if (days === 1) text = '1 day to go';
+      else text = days + ' days to go';
+      el.textContent = text;
+
+      // Mark urgent if within 7 days
+      const pill = el.closest('.deadline-pill');
+      if (days >= 0 && days <= 7) {
+        pill.classList.add('urgent');
+      }
+    });
+  }
+
+  // Checkbox interactivity + progress bar
+  function setupChecks() {
+    const items = document.querySelectorAll('.check-item');
+    const bar = document.getElementById('progressBar');
+    const count = document.getElementById('progressCount');
+    const total = items.length;
+
+    function refresh() {
+      const done = document.querySelectorAll('.check-item.checked').length;
+      const pct = total === 0 ? 0 : (done / total) * 100;
+      bar.style.width = pct + '%';
+      count.textContent = done + ' / ' + total;
+
+      // Mark asset cards as done when all their items are checked
+      document.querySelectorAll('.asset').forEach(asset => {
+        const childItems = asset.querySelectorAll('.check-item');
+        const childChecked = asset.querySelectorAll('.check-item.checked');
+        if (childItems.length > 0 && childItems.length === childChecked.length) {
+          asset.classList.add('done');
+        } else {
+          asset.classList.remove('done');
+        }
+      });
+    }
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('checked');
+        refresh();
+      });
+    });
+
+    count.textContent = '0 / ' + total;
+  }
+
+  updateDeadlines();
+  setupChecks();
+</script>
+
+</body>
+</html>
