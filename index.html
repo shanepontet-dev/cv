@@ -702,6 +702,28 @@
   .site-credit:hover{ background:var(--dark); border-color:var(--dark); color:var(--dark-text); }
   .site-credit svg{ width:13px; height:13px; flex:none; }
 
+  .visitor-counter-row{
+    position:fixed;
+    right:16px;
+    bottom:16px;
+    z-index:1000;
+  }
+  .visitor-counter{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:7px 12px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:1em;
+    font-family:var(--caps-font);
+    font-size:10.5px;
+    letter-spacing:.03em;
+    color:#575a65;
+    box-shadow:0 2px 10px rgba(0,0,0,.07);
+  }
+  .visitor-counter svg{ width:13px; height:13px; flex:none; }
+
   .pixel-bunny{
     width:20px;
     height:20px;
@@ -719,6 +741,7 @@
 
   @media print{
     .site-credit-row{ display:none; }
+    .visitor-counter-row{ display:none; }
     body{ background:#fff; }
     .layout{ max-width:100%; padding:12mm; gap:22px; }
     .col-left{ position:static; }
@@ -1116,6 +1139,44 @@
   </a>
   <div class="pixel-bunny" aria-hidden="true"><img src="bunny.png" alt=""></div>
 </div>
+
+<div class="visitor-counter-row" id="visitor-counter-row" hidden>
+  <span class="visitor-counter" title="Unique visitors">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+    <span id="visitor-count">0</span>
+  </span>
+</div>
+
+<script>
+(function(){
+  // Free, no-account counter (api.counterapi.dev). Uniqueness is tracked
+  // per-browser via localStorage, not per-IP, and the count isn't tamper-proof
+  // (the increment URL is visible in this source), but no signup is needed.
+  var COUNTER_BASE = "https://api.counterapi.dev/v1/shanepontetdev-cv/visits";
+  var FLAG_KEY = "sp_cv_counted";
+
+  var row = document.getElementById('visitor-counter-row');
+  var countEl = document.getElementById('visitor-count');
+
+  // Visit this page once with ?nocount=1 on any device/browser you don't
+  // want counted (e.g. your own) to opt it out permanently.
+  if (new URLSearchParams(location.search).has('nocount')) {
+    localStorage.setItem(FLAG_KEY, '1');
+  }
+
+  var alreadyCounted = localStorage.getItem(FLAG_KEY) === '1';
+  var endpoint = COUNTER_BASE + (alreadyCounted ? '/' : '/up');
+
+  fetch(endpoint)
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      if (!alreadyCounted) localStorage.setItem(FLAG_KEY, '1');
+      countEl.textContent = data.count;
+      row.hidden = false;
+    })
+    .catch(function(){ /* leave hidden if the counter service is unreachable */ });
+})();
+</script>
 
 <div class="lightbox-overlay" id="lightbox" hidden>
   <div class="lightbox-box">
