@@ -1157,10 +1157,14 @@
 
 <script>
 (function(){
-  // Free, no-account counter (api.counterapi.dev). Uniqueness is tracked
+  // Free, no-account counter (abacus.jasoncameron.dev). Uniqueness is tracked
   // per-browser via localStorage, not per-IP, and the count isn't tamper-proof
   // (the increment URL is visible in this source), but no signup is needed.
-  var COUNTER_BASE = "https://api.counterapi.dev/v1/shanepontetdev-cv/visits";
+  // (Previously used api.counterapi.dev, but its v1 API was deprecated and
+  // shut down; v2 requires a signed-up account, so switched providers.)
+  var COUNTER_BASE = "https://abacus.jasoncameron.dev";
+  var COUNTER_NS = "shanepontetdev-cv";
+  var COUNTER_KEY = "cv-visits";
   var FLAG_KEY = "sp_cv_counted";
 
   var row = document.getElementById('visitor-counter-row');
@@ -1173,13 +1177,13 @@
   }
 
   var alreadyCounted = localStorage.getItem(FLAG_KEY) === '1';
-  var endpoint = COUNTER_BASE + (alreadyCounted ? '/' : '/up');
+  var endpoint = COUNTER_BASE + '/' + (alreadyCounted ? 'get' : 'hit') + '/' + COUNTER_NS + '/' + COUNTER_KEY;
 
   fetch(endpoint)
     .then(function(res){ return res.json(); })
     .then(function(data){
       if (!alreadyCounted) localStorage.setItem(FLAG_KEY, '1');
-      countEl.textContent = data.count;
+      countEl.textContent = data.value;
       row.hidden = false;
     })
     .catch(function(){ /* leave hidden if the counter service is unreachable */ });
