@@ -1165,7 +1165,10 @@
   var COUNTER_BASE = "https://abacus.jasoncameron.dev";
   var COUNTER_NS = "shanepontetdev-cv";
   var COUNTER_KEY = "cv-visits";
-  var FLAG_KEY = "sp_cv_counted";
+  // Versioned so switching counter/key in future always starts every
+  // browser fresh again, instead of getting stuck calling "get" on a
+  // counter key that flag-holders' browsers never actually "hit".
+  var FLAG_KEY = "sp_cv_counted_v2";
 
   var row = document.getElementById('visitor-counter-row');
   var countEl = document.getElementById('visitor-count');
