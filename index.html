@@ -1164,11 +1164,12 @@
   // shut down; v2 requires a signed-up account, so switched providers.)
   var COUNTER_BASE = "https://abacus.jasoncameron.dev";
   var COUNTER_NS = "shanepontetdev-cv";
-  var COUNTER_KEY = "cv-visits";
+  var COUNTER_KEY = "cv-live-count";
   // Versioned so switching counter/key in future always starts every
   // browser fresh again, instead of getting stuck calling "get" on a
   // counter key that flag-holders' browsers never actually "hit".
-  var FLAG_KEY = "sp_cv_counted_v2";
+  // Bump both together whenever COUNTER_KEY changes.
+  var FLAG_KEY = "sp_cv_counted_v3";
 
   var row = document.getElementById('visitor-counter-row');
   var countEl = document.getElementById('visitor-count');
